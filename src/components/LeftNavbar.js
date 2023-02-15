@@ -9,9 +9,8 @@ const LeftNavbar = () => {
   return (
     <div className="main">
       <Image
-        radius="md"
         src="https://cdn2.iconfinder.com/data/icons/weather-flat-14/64/weather02-512.png"
-        alt="Random unsplash image"
+        alt="weather icon"
       />
       <p className="temperature-title">{temperature}</p>
       <p style={{ margin: 0 }}>Monday, 12/2/2023</p>

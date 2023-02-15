@@ -15,9 +15,9 @@ const MenuBar = () => {
             root: {
               backgroundColor: '#000',
               border: 0,
-              height: 42,
-              paddingLeft: 20,
-              paddingRight: 20,
+              padding: 0,
+              width: 40,
+              borderRadius: 22,
               fontSize: 14,
               '&:hover': {
                 backgroundColor: theme.fn.darken('#4b4b49', 0.05),
@@ -31,11 +31,12 @@ const MenuBar = () => {
           styles={(theme) => ({
             root: {
               backgroundColor: '#eee',
+              marginLeft: 8,
+              marginRight: 20,
               border: 0,
-              height: 42,
-              marginLeft: 5,
-              paddingLeft: 20,
-              paddingRight: 20,
+              padding: 0,
+              width: 40,
+              borderRadius: 22,
               fontSize: 14,
               color: '#000',
               '&:hover': {
