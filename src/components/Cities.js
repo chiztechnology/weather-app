@@ -1,9 +1,15 @@
 import React from 'react';
 import { Select, Loader } from '@mantine/core';
 import { FaSearch } from 'react-icons/fa';
+// import { useSelector } from 'react-redux';
 
 const Cities = () => {
-  const a = 0;
+  // const dispatch = useDispatch();
+  // const { weather } = useSelector((state) => state.weather);
+
+  // console.log(weather);
+  console.log();
+
   return (
     <div>
       <Select
@@ -19,8 +25,6 @@ const Cities = () => {
         ]}
         style={{ width: 420 }}
       />
-      {a}
-
       {/* display grid */}
       <div style={{ alignItems: 'center', justifyContent: 'center' }}>
         <Loader variant="dots" style={{ alignSelf: 'center' }} />
