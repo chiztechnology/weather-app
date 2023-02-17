@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+
 const FETCH = 'weather/FETCH';
 
 const initialState = {

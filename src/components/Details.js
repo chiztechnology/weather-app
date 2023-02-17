@@ -1,4 +1,6 @@
-import { Button } from '@mantine/core';
+import {
+  Button, Image, ScrollArea, Text,
+} from '@mantine/core';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -25,8 +27,25 @@ const Details = () => {
       >
         Back
       </Button>
-
-      <p>Details view of the app</p>
+      {/* page content */}
+      <div>
+        <Text style={{ fontSize: 32 }}>This Week</Text>
+        <ScrollArea style={{ width: '100%', height: 160 }}>
+          <div style={{
+            height: 200, width: 100, backgroundColor: '#efefef', borderRadius: 3, alignItems: 'center', justifyContent: 'center', display: 'flex', flexDirection: 'column',
+          }}
+          >
+            <p style={{ margin: 0 }}>Sunday</p>
+            <Image
+              radius="md"
+              src="//cdn.weatherapi.com/weather/64x64/night/143.png"
+              alt="Random unsplash image"
+              style={{ width: 30, height: 'auto' }}
+            />
+            <p style={{ margin: 0 }}>18-c</p>
+          </div>
+        </ScrollArea>
+      </div>
     </div>
   );
 };
