@@ -9,7 +9,7 @@ const Cities = () => {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 3000);
+    }, 500);
   }, []);
   // const dispatch = useDispatch();
   // const { weather } = useSelector((state) => state.weather);
