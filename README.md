@@ -64,7 +64,11 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link](#)
+- [Live Demo Link]()
+
+Kindly find below the link to the video presenting the app and it's features.
+
+- [Video Explainning the Proect](https://www.loom.com/share/8c6d48aad1ca4c9fa61c904bf321803b)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
