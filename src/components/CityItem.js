@@ -1,8 +1,10 @@
 /* eslint-disable */
 import { Image, Text } from '@mantine/core';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FaCity } from 'react-icons/fa';
-import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import { createSearchParams, useNavigate } from "react-router-dom";
+import { getWeatherDetails } from '../redux/weather/weatherSlice';
 import './cityitem.css';
 // import { useSelector } from 'react-redux';
 
@@ -11,11 +13,12 @@ const CityItem = (props) => {
   // console.log(props);
   const { name, country, localtime, humidity, temp_c } = props.data;
   const navigate = useNavigate();
+
   // const { humididy, temp_c } = props.data ? props.data.condition: 0;
   // const { name, country, localtime } = '';
   // const { humididy, temp_c } = '';
   return (
-    <div className="item-container" onClick={() => navigate("/details")}>
+    <div className="item-container" onClick={() => navigate({ pathname: "/details", search: createSearchParams({ cityName: name }).toString() })}>
       <Text style={{ alignItems: 'center', display: 'flex' }}>
         <FaCity style={{ paddingRight: 5 }} size={24} />
         {name}

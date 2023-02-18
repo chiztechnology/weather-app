@@ -1,16 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import {
   AppShell, Navbar, Header, Burger, MediaQuery,
 } from '@mantine/core';
-// import Navbar from './Navbar';
+import { useDispatch } from 'react-redux';
 import Cities from './Cities';
 import Details from './Details';
 import LeftNavbar from './LeftNavbar';
 import MenuBar from './MenuBar';
+import { getWeatherDetails } from '../redux/weather/DetailWeather';
 
 const Weather = () => {
   const [opened, setOpened] = useState(false);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getWeatherDetails('san francisco'));
+  }, []);
+
   return (
     <BrowserRouter>
       <AppShell
@@ -18,7 +24,6 @@ const Weather = () => {
         navbarOffsetBreakpoint="sm"
         asideOffsetBreakpoint="sm"
         navbar={<Navbar height="100vh" p="md" hiddenBreakpoint="sm" hidden={!opened} width={{ sm: 200, lg: 300 }}><LeftNavbar /></Navbar>}
-        // header={<Header height={60} p="xs"><MenuBar /></Header>}
         header={
           (
             <Header height={{ base: 50, md: 70 }} p="md">
