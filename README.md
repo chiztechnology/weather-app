@@ -64,7 +64,7 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link]()
+- [Live Demo Link](https://weather-app-xx49.onrender.com)
 
 Kindly find below the link to the video presenting the app and it's features.
 
