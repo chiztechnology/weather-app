@@ -1,22 +1,22 @@
 .main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .temperature-title {
-    font-size: 68px;
-    font-weight: bold;
-    margin: 0;
+  font-size: 68px;
+  font-weight: bold;
+  margin: 0;
 }
 
 .chance-of-rain {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .weather-stat {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
