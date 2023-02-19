@@ -9,7 +9,6 @@ import { getWeatherDetails } from '../redux/weather/DetailWeather';
 
 const Details = () => {
   const [searchparams] = useSearchParams();
-  console.log(searchparams.get('cityName'));
 
   const dataDet = useSelector((state) => state.WeatherDetails);
   const obj = dataDet.WeatherDetails;

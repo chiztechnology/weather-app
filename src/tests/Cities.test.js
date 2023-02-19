@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import Cities from '../components/Cities';
 import store from '../redux/configureStore';
 
-jest.mock("axios");
+jest.mock('axios');
 
 describe('Cities Page Component', () => {
   test('renders the component properly', () => {
