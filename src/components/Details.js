@@ -10,17 +10,19 @@ import { getWeatherDetails } from '../redux/weather/DetailWeather';
 const Details = () => {
   const [searchparams] = useSearchParams();
 
-  const dataDet = useSelector((state) => state.WeatherDetails);
-  const obj = dataDet.WeatherDetails;
+  const dataDet = useSelector((state) => state.weatherDetails);
+  // console.log(dataDet);
+  const obj = dataDet.weatherDetails;
+  console.log(dataDet);
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getWeatherDetails(searchparams.get('cityName')));
-  }, [dispatch]);
+  }, []);
 
   const navigate = useNavigate();
   return (
     <div>
-
       <Button
         onClick={() => navigate(-1)}
         styles={(theme) => ({
@@ -44,9 +46,9 @@ const Details = () => {
           fontSize: 32, fontWeight: 200, marginTop: 10, marginBottom: 30,
         }}
         >
-          {obj.location.name}
+          {obj.location.name || '... Loading'}
           (
-          {obj.location.country}
+          {obj.location.country || '... Loading'}
           )
         </Text>
 

@@ -1,34 +1,65 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import axios from 'axios';
+// import api from '../../api';
 
-const FETCH = 'weather/FETCH';
+const FETCH = 'cities/FETCH';
+// const apiKey = process.env.REACT_APP_apiKey || '';
 
 const initialState = {
-  weather: [],
+  cities: [],
 };
 
+// const towns = {
+//   locations: [
+//     {
+//       q: 'paris',
+//     },
+//     {
+//       q: 'chicago',
+//     },
+//     {
+//       q: 'washington',
+//     },
+//     {
+//       q: '90201',
+//     },
+//     {
+//       q: 'kinshasa',
+//     },
+//     {
+//       q: 'nairobi',
+//     },
+//     {
+//       q: 'madrid',
+//     },
+//     {
+//       q: 'tokyo',
+//     },
+//     {
+//       q: 'new york',
+//     },
+//   ],
+// };
+
 export const getWeatherFromRandomCities = createAsyncThunk(FETCH, async () => {
-  const weather = [{
-    id: 1, name: 'london', country: 'United Kingdom', localtime: '12:09 PM', humidity: '80%', temp_c: '23',
-  }, {
-    id: 2, name: 'paris', country: 'France', localtime: '1:09 PM', humidity: '10%', temp_c: '12',
-  }, {
-    id: 3, name: 'kinshasa', country: 'DR Congo', localtime: '1:09 PM', humidity: '27%', temp_c: '32',
-  }, {
-    id: 4, name: 'san francisco', country: 'United States', localtime: '8:09 PM', humidity: '18%', temp_c: '15',
-  }];
-  return weather;
+  const cities = await axios.post('https://countriesnow.space/api/v0.1/countries/population/cities/filter', {
+    limit: 20, order: 'rand', orderBy: 'name', country: 'france',
+  });
+  console.log('data from api');
+  console.log(cities.data.data);
+  return cities.data.data;
 });
 
 const weatherSlice = createSlice({
-  name: 'weather',
+  name: 'cities',
   initialState,
   reducers: {
   },
-  extraReducers: {
-    [getWeatherFromRandomCities.fulfilled]: (state, action) => {
-      const currState = state;
-      currState.weather = action.payload;
-    },
+  extraReducers: (builder) => {
+    builder.addCase(getWeatherFromRandomCities.fulfilled, (state, action) => ({
+      ...state,
+      cities: action.payload,
+    }));
   },
 });
 

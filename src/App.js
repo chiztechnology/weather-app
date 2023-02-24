@@ -8,7 +8,7 @@ import Weather from './components/Weather';
 function App() {
   // const dispatch = useDispatch();
   // useEffect(() => {
-  //   dispatch(getWeatherFromRandomCities());
+
   // }, [dispatch]);
 
   return (

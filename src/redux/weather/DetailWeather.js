@@ -1,48 +1,50 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+const apiKey = process.env.REACT_APP_apiKey || '';
+
 const FETCH = 'weather/FETCH';
-const apiKey = '45ef86c3a51d4ca7acc85658231502';
+// const apiKey = '';
 const initialState = {
-  WeatherDetails: {
+  weatherDetails: {
     location: {
       name: '...',
       region: '...',
       country: '...',
-      localtime: '2023-02-18 21:28',
+      localtime: '...',
     },
     current: {
-      temp_c: 26.6,
-      temp_f: 79.9,
+      temp_c: 0,
+      temp_f: 0,
       condition: {
         text: 'Clear',
         icon: '//cdn.weatherapi.com/weather/64x64/night/113.png',
         code: 1000,
       },
-      wind_mph: 2.9,
-      wind_kph: 4.7,
-      wind_degree: 243,
-      wind_dir: 'WSW',
-      humidity: 65,
+      wind_mph: 0,
+      wind_kph: 0,
+      wind_degree: 0,
+      wind_dir: '',
+      humidity: 0,
     },
   },
 };
 
 export const getWeatherDetails = createAsyncThunk(FETCH, async (name) => {
-  const WeatherDetails = await axios.get(`http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${name}`);
-  return WeatherDetails.data;
+  const weatherDetails = await axios.get(`http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${name}`);
+  return weatherDetails.data;
 });
 
 const weatherDetailsSlice = createSlice({
-  name: 'WeatherDetails',
+  name: 'weatherDetails',
   initialState,
   reducers: {
   },
-  extraReducers: {
-    [getWeatherDetails.fulfilled]: (state, action) => {
-      const currState = state;
-      currState.WeatherDetails = action.payload;
-    },
+  extraReducers: (builder) => {
+    builder.addCase(getWeatherDetails.fulfilled, (state, action) => ({
+      ...state,
+      weatherDetails: action.payload,
+    }));
   },
 });
 

@@ -8,13 +8,15 @@ import Cities from './Cities';
 import Details from './Details';
 import LeftNavbar from './LeftNavbar';
 import MenuBar from './MenuBar';
-import { getWeatherDetails } from '../redux/weather/DetailWeather';
+// import { getWeatherDetails } from '../redux/weather/DetailWeather';
+import { getWeatherFromRandomCities } from '../redux/weather/weatherSlice';
 
 const Weather = () => {
   const [opened, setOpened] = useState(false);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getWeatherDetails('san francisco'));
+    // dispatch(getWeatherDetails('san francisco'));
+    dispatch(getWeatherFromRandomCities());
   }, []);
 
   return (
