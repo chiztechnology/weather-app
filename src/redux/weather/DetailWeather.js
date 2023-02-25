@@ -30,7 +30,7 @@ const initialState = {
 };
 
 export const getWeatherDetails = createAsyncThunk(FETCH, async (name) => {
-  const weatherDetails = await axios.get(`http://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${name}`);
+  const weatherDetails = await axios.get(`https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${name}`);
   return weatherDetails.data;
 });
 
