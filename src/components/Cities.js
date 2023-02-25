@@ -22,7 +22,6 @@ const Cities = () => {
 
   const handleChange = (text) => {
     const content = text.target.value;
-    console.log(content);
     setFilteredData(cities.filter((e) => e.city.toLowerCase().includes(content.toLowerCase())));
   };
 
