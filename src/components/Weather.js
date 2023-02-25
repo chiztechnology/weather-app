@@ -16,7 +16,7 @@ const Weather = () => {
       {/* Your application here */}
       <Routes>
         <Route path="/" element={<Cities />} />
-        <Route path="/details" element={<Details />} />
+        <Route path="/details/:id" element={<Details />} />
       </Routes>
     </BrowserRouter>
   );

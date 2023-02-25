@@ -2,21 +2,20 @@ import {
   Image, RingProgress, Text, UnstyledButton,
 } from '@mantine/core';
 import React, { useEffect } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { getWeatherDetails } from '../redux/weather/DetailWeather';
 import './details.css';
 
 const Details = () => {
-  const [searchparams] = useSearchParams();
-
+  const { id } = useParams();
   const dataDet = useSelector((state) => state.weatherDetails);
   const obj = dataDet.weatherDetails;
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getWeatherDetails(searchparams.get('cityName')));
+    dispatch(getWeatherDetails(id));
   }, []);
 
   const navigate = useNavigate();
