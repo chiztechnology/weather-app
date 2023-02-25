@@ -4,7 +4,6 @@ import axios from 'axios';
 const apiKey = process.env.REACT_APP_apiKey || '';
 
 const FETCH = 'weather/FETCH';
-// const apiKey = '';
 const initialState = {
   weatherDetails: {
     location: {

@@ -12,9 +12,7 @@ const Details = () => {
   const [searchparams] = useSearchParams();
 
   const dataDet = useSelector((state) => state.weatherDetails);
-  // console.log(dataDet);
   const obj = dataDet.weatherDetails;
-  console.log(dataDet);
 
   const dispatch = useDispatch();
   useEffect(() => {
