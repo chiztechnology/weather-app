@@ -14,12 +14,10 @@ const Cities = () => {
 
   useEffect(() => {
     setLoading(true);
-    // setTimeout(() => {
     if (cities.length > 0) {
       setLoading(false);
     }
     setFilteredData(cities);
-    // }, 1000);
   }, [cities]);
 
   const handleChange = (text) => {
