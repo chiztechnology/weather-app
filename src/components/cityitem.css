@@ -1,0 +1,34 @@
+.item-container {
+  padding: 10px;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #c94273;
+}
+
+.item-container:nth-child(even) {
+  background-color: #dc598a;
+}
+
+.item-container:hover {
+  background: #d84e80;
+}
+
+.city-item-name {
+  color: #fff;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.sub-div-city-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.country-name {
+  color: #fff;
+  padding-right: 10px;
+}
