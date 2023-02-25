@@ -7,10 +7,10 @@ const FETCH = 'weather/FETCH';
 const initialState = {
   weatherDetails: {
     location: {
-      name: '...',
-      region: '...',
-      country: '...',
-      localtime: '...',
+      name: '',
+      region: '',
+      country: '',
+      localtime: '',
     },
     current: {
       temp_c: 0,

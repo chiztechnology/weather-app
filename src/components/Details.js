@@ -34,10 +34,9 @@ const Details = () => {
       <div>
 
         <Text className="details-text-name">
-          {obj.location.name || '... Loading'}
-          (
-          {obj.location.country || '... Loading'}
-          )
+          {obj.location.name}
+          {' '}
+          {obj.location.country}
         </Text>
 
         <Text className="text-highlights-title">

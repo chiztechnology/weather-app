@@ -1,20 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import {
-  Loader, Text, Image,
+  Loader, Text, Image, Input,
 } from '@mantine/core';
 import { useSelector } from 'react-redux';
+import { FaSearch } from 'react-icons/fa';
 import CityItem from './CityItem';
 import './cities.css';
 
 const Cities = () => {
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 500);
-  }, []);
-
   const { cities } = useSelector((state) => state.cities);
+  const [loading, setLoading] = useState(true);
+  const [filteredData, setFilteredData] = useState([]);
+
+  useEffect(() => {
+    setLoading(true);
+    // setTimeout(() => {
+    if (cities.length > 0) {
+      setLoading(false);
+    }
+    setFilteredData(cities);
+    // }, 1000);
+  }, [cities]);
+
+  const handleChange = (text) => {
+    const content = text.target.value;
+    console.log(content);
+    setFilteredData(cities.filter((e) => e.city.toLowerCase().includes(content.toLowerCase())));
+  };
 
   return (
     <div className="cities-container">
@@ -34,6 +46,13 @@ const Cities = () => {
         <Text className="weather-desc-title">Weather App</Text>
       </div>
 
+      <Input
+        className="search-input"
+        icon={<FaSearch />}
+        placeholder="Search"
+        onChange={handleChange}
+      />
+
       <div className="list-cities-bar">
         <Text className="list-of-cities">List of cities</Text>
       </div>
@@ -42,9 +61,11 @@ const Cities = () => {
       <div style={{ alignItems: 'center', justifyContent: 'center' }}>
 
         {loading ? (
-          <Loader variant="dots" style={{ alignSelf: 'center' }} />
+          <div className="loading-container">
+            <Loader variant="dots" style={{ alignSelf: 'center' }} />
+          </div>
         ) : (
-          cities.length > 0 && cities.map((city) => (
+          filteredData.length > 0 && filteredData.map((city) => (
             <CityItem key={city.city} data={city} />
           ))
         )}
