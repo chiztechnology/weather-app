@@ -1,11 +1,12 @@
 import {
-  Button, Image, RingProgress, Text,
+  Image, RingProgress, Text, UnstyledButton,
 } from '@mantine/core';
 import React, { useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { getWeatherDetails } from '../redux/weather/DetailWeather';
+import './details.css';
 
 const Details = () => {
   const [searchparams] = useSearchParams();
@@ -22,73 +23,54 @@ const Details = () => {
 
   const navigate = useNavigate();
   return (
-    <div>
-      <Button
-        onClick={() => navigate(-1)}
-        styles={(theme) => ({
-          root: {
-            border: 0,
-            padding: 0,
-            width: 40,
-            fontSize: 14,
-            '&:hover': {
-              backgroundColor: theme.fn.darken('#4b4b49', 0.05),
-            },
-          },
-        })}
-      >
-        <FaArrowLeft />
-      </Button>
+    <div className="cities-container">
+      <div className="cities-status-bar">
+        <UnstyledButton
+          onClick={() => navigate(-1)}
+          className="navigate-back-button"
+        >
+          <FaArrowLeft color="white" />
+        </UnstyledButton>
+        <Text className="city-header-title">Town/Cities</Text>
+      </div>
       {/* page content */}
       <div>
 
-        <Text style={{
-          fontSize: 32, fontWeight: 200, marginTop: 10, marginBottom: 30,
-        }}
-        >
+        <Text className="details-text-name">
           {obj.location.name || '... Loading'}
           (
           {obj.location.country || '... Loading'}
           )
         </Text>
 
-        <Text style={{ fontSize: 24, fontWeight: 500, marginTop: 10 }}>
+        <Text className="text-highlights-title">
           Today&apos;s Highlights
         </Text>
         {/* highlights components */}
-        <div style={{ display: 'flex' }}>
+        <div className="data-grid">
           {/* uv index */}
-          <div
-            style={{
-              height: 200, width: 200, backgroundColor: '#fff', borderRadius: 12, alignItems: 'center', justifyContent: 'center', display: 'flex', flexDirection: 'column', boxShadow: '0 3px 10px rgb(0 0 0 / 0.1)', margin: 5,
-            }}
-          >
+          <div className="data-grid-item">
             <Text>UV Index</Text>
             <RingProgress
-              sections={[{ value: obj.current.uv, color: 'blue' }]}
+              sections={[{ value: obj.current.uv, color: 'yellow' }]}
               label={
-                <Text color="blue" weight={700} align="center" size="xl">{obj.current.uv}</Text>
+                <Text color="yellow" weight={700} align="center" size="xl">{obj.current.uv}</Text>
               }
             />
           </div>
           {/* wind status */}
-          <div
-            style={{
-              height: 200, width: 200, backgroundColor: '#fff', borderRadius: 12, alignItems: 'center', justifyContent: 'center', display: 'flex', flexDirection: 'column', boxShadow: '0 3px 10px rgb(0 0 0 / 0.1)', margin: 5,
-            }}
-          >
+          <div className="data-grid-item dark">
             <Text>Wind Status</Text>
             <Text style={{ fontWeight: 500, fontSize: 42, margin: '30px 0 30px 0' }}>
               {obj.current.wind_kph}
               <span style={{ fontSize: 18 }}>Km/h</span>
             </Text>
           </div>
+        </div>
+
+        <div className="data-grid">
           {/* Sunrise and Sunset */}
-          <div
-            style={{
-              height: 200, width: 200, backgroundColor: '#fff', borderRadius: 12, alignItems: 'center', justifyContent: 'center', display: 'flex', flexDirection: 'column', boxShadow: '0 3px 10px rgb(0 0 0 / 0.1)', margin: 5,
-            }}
-          >
+          <div className="data-grid-item dark">
 
             <Text>Temperature</Text>
 
@@ -110,11 +92,7 @@ const Details = () => {
             </div>
           </div>
           {/* Humidity */}
-          <div
-            style={{
-              height: 200, width: 200, backgroundColor: '#fff', borderRadius: 12, alignItems: 'center', justifyContent: 'center', display: 'flex', flexDirection: 'column', boxShadow: '0 3px 10px rgb(0 0 0 / 0.1)', margin: 5,
-            }}
-          >
+          <div className="data-grid-item">
             <Text>Humidity</Text>
             <Text style={{ fontWeight: 500, fontSize: 42, margin: '30px 0 3px 0' }}>
               {obj.current.humidity}
